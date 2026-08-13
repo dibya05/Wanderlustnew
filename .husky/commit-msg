@@ -1,0 +1,26 @@
+
+commit_msg_file="$1"
+commit_msg=$(cat "$commit_msg_file")
+regex_pattern="^(fix|feat|docs|chore|refactor)(-#[0-9]+)?: .+\$"
+
+if [[ $commit_msg =~ $regex_pattern ]]; then
+  echo ""
+  echo "✅ Nice! Thanks for following the community commit message format."
+  echo ""
+else
+  echo ""
+  echo "⚠️  Warning: Your commit message does not follow the community guidelines!"
+  echo ""
+  echo "👉 Expected formats:"
+  echo "   <tag>-#<issue number>: <message>   # if you have an issue"
+  echo "   <tag>: <message>                   # if no issue number"
+  echo ""
+  echo "Examples:"
+  echo "❌ Fixed a bug"
+  echo "✅ fix-#123: Fixed a bug"
+  echo "✅ chore: Updated documentation"
+  echo ""
+  echo "🔗 Please refer to the contribution guidelines:"
+  echo "   https://github.com/krishnaacharyaa/wanderlust/blob/9b11b769bb23150b746296cf9008056633d21921/.github/CONTRIBUTING.md#guidelines-for-contributions"
+  echo ""
+fi

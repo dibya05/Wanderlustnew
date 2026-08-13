@@ -1,0 +1,20 @@
+{
+	"dependencies": {
+		"concurrently": "^9.1.2",
+		"js-cookie": "^3.0.5"
+	},
+	"scripts": {
+		"start-frontend": "cd frontend && npm run dev",
+		"start-backend": "cd backend && npm run dev",
+		"start": "concurrently -n \"FRONTEND,BACKEND\" -c \"bgBlue,bgYellow\" -p \"[{name}]\" \"npm run start-frontend\" \"npm run start-backend\"",
+		"install-frontend": "cd frontend && npm i",
+		"install-backend": "cd backend && npm i",
+		"installer": "npm i && npm run install-backend && npm run install-frontend",
+		"seed": "npm run --prefix backend seed",
+		"prepare": "husky install",
+		"postinstall": "node ./scripts/postInstall.mjs"
+	},
+	"devDependencies": {
+		"husky": "^9.1.7"
+	}
+}
